@@ -9,33 +9,33 @@
 //     * для none: просто не указывайте media или поставьте { type: "none" }
 
 const worksData = [
-    {
-        title: { en: "Forest Survival", ru: "Forest Survival" },
-        description: {
-            en: "Multiplayer survival with inventory, crafting, and leveling. Built with KnitFramework.",
-            ru: "Мультиплеерное выживание с инвентарём, крафтом и прокачкой. На базе KnitFramework."
-        },
-        tags: ["Knit", "Janitor", "Signal"],
-        media: { type: "youtube", src: "https://www.youtube.com/watch?v=ВАШ_ID_ВИДЕО" }
-    },
-    {
-        title: { en: "Dungeon Crawler", ru: "Dungeon Crawler" },
-        description: {
-            en: "Procedural dungeon generation, combat system, and bosses. OOP architecture.",
-            ru: "Процедурная генерация подземелий, боевая система и боссы. ООП-архитектура."
-        },
-        tags: ["OOP", "Roblox Studio", "Luau"],
-        media: { type: "local", src: "videos/dungeon.mp4" }
-    },
-    {
-        title: { en: "Economy System", ru: "Economy System" },
-        description: {
-            en: "Currency, shops, saves, and admin panel. DataStore and UI integration.",
-            ru: "Валюта, магазины, сохранения и админ-панель. Интеграция DataStore и UI."
-        },
-        tags: ["Knit", "DataStore", "UI"],
-        media: { type: "none" } // или просто удалите media
-    }
+    // {
+    //     title: { en: "Forest Survival", ru: "Forest Survival" },
+    //     description: {
+    //         en: "Multiplayer survival with inventory, crafting, and leveling. Built with KnitFramework.",
+    //         ru: "Мультиплеерное выживание с инвентарём, крафтом и прокачкой. На базе KnitFramework."
+    //     },
+    //     tags: ["Knit", "Janitor", "Signal"],
+    //     media: { type: "youtube", src: "https://www.youtube.com/watch?v=ВАШ_ID_ВИДЕО" }
+    // },
+    // {
+    //     title: { en: "Dungeon Crawler", ru: "Dungeon Crawler" },
+    //     description: {
+    //         en: "Procedural dungeon generation, combat system, and bosses. OOP architecture.",
+    //         ru: "Процедурная генерация подземелий, боевая система и боссы. ООП-архитектура."
+    //     },
+    //     tags: ["OOP", "Roblox Studio", "Luau"],
+    //     media: { type: "local", src: "videos/dungeon.mp4" }
+    // },
+    // {
+    //     title: { en: "Economy System", ru: "Economy System" },
+    //     description: {
+    //         en: "Currency, shops, saves, and admin panel. DataStore and UI integration.",
+    //         ru: "Валюта, магазины, сохранения и админ-панель. Интеграция DataStore и UI."
+    //     },
+    //     tags: ["Knit", "DataStore", "UI"],
+    //     media: { type: "none" } // или просто удалите media
+    // }
 ];
 
 const skillsData = [
