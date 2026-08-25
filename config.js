@@ -194,21 +194,21 @@ const modalData = {
         },
         sections: [
             {
-                heading: { en: "- Accepted Methods", ru: "- Способы оплаты" },
+                heading: { en: "• Accepted Methods", ru: "• Способы оплаты" },
                 text: {
                     en: "I accept Cards / SBP (RUB), Robux (Group Funds or Gamepass), and Crypto / PayPal (USD).",
                     ru: "Принимаю оплату на Карту / СБП (₽), Robux (Group Funds или Gamepass) и Криптовалюту / PayPal ($)."
                 }
             },
             {
-                heading: { en: "- Roblox Tax Policy", ru: "- Комиссия Robux (+30%)" },
+                heading: { en: "• Roblox Tax Policy", ru: "• Комиссия Robux (+30%)" },
                 text: {
                     en: "If paying via Gamepass or T-Shirt, the buyer covers the 30% Roblox marketplace commission so the agreed amount is received in full.",
                     ru: "При оплате через Gamepass или T-Shirt покупатель покрывает комиссию Roblox (+30%), чтобы пришла чистая сумма."
                 }
             },
             {
-                heading: { en: "- Work Safety & Transfer", ru: "- Порядок передачи" },
+                heading: { en: "• Work Safety & Transfer", ru: "• Порядок передачи" },
                 text: {
                     en: "No upfront payment is required for small/medium tasks. Payment is made AFTER you test the system on video or in a test place.",
                     ru: "Для мелких и средних задач предоплата не требуется. Оплата происходит ПОСЛЕ проверки системы на видео или тестовом плейсе."
