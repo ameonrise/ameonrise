@@ -3,202 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Scripter | Portfolio</title>
+    <title>ameonrise | Roblox Scripter</title>
+    <!-- Favicon (зелёная буква A) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%230b120e'/><text x='8' y='12' font-family='Arial' font-size='10' fill='%2357b05f' text-anchor='middle' font-weight='bold'>A</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts: Manrope, Unbounded, JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0e1712;
-            --bg-secondary: #14201a;
-            --bg-card: #1a2a20;
-            --bg-card-hover: #213328;
-            --accent: #2f8f3e;
+            --bg-primary: #0b120e;
+            --bg-secondary: #111a14;
+            --bg-card: #15221a;
+            --bg-card-hover: #1c2e23;
+            --accent: #2e9e4f;
             --accent-glow: #57b05f;
-            --accent-dark: #237a32;
-            --gold: #d4a044;
-            --text-primary: #e8f2e9;
-            --text-secondary: #bcd0bd;
-            --text-muted: #8fab8f;
-            --border: #2e4d3a;
-            --border-light: #3d6249;
-            --gradient-2: linear-gradient(135deg, #2f8f3e 0%, #237a32 100%);
-            --radius: 16px;
+            --accent-dark: #1b6330;
+            --text-primary: #ecf7ed;
+            --text-secondary: #a8c3ac;
+            --text-muted: #6e8c73;
+            --border: #223d2b;
+            --border-light: #2f543c;
+            
+            --code-keyword: #ff7b72;
+            --code-string: #a5d6ff;
+            --code-function: #d2a8ff;
+            --code-comment: #6e8870;
+
+            --radius: 18px;
             --radius-lg: 24px;
-            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(47, 143, 62, 0.1);
+            --radius-pill: 50px;
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.45);
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #2e4d3a #0e1712; }
+        html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #223d2b #0b120e; }
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            background: var(--bg-primary);
+            font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-        }
-
-        /* Переливающийся фон */
-        .bg-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
-        .bg-particles .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.18; animation: floatOrb 20s ease-in-out infinite; }
-        .bg-particles .orb:nth-child(1) { width: 500px; height: 500px; background: #2d4f38; top: -10%; left: -5%; animation-delay: 0s; animation-duration: 22s; }
-        .bg-particles .orb:nth-child(2) { width: 400px; height: 400px; background: #3a7047; bottom: -15%; right: -8%; animation-delay: -7s; animation-duration: 25s; }
-        .bg-particles .orb:nth-child(3) { width: 350px; height: 350px; background: #478656; top: 50%; left: 50%; animation-delay: -14s; animation-duration: 18s; }
-
-        @keyframes floatOrb {
-            0%, 100% { transform: translate(0,0) scale(1); }
-            25% { transform: translate(60px,-80px) scale(1.15); }
-            50% { transform: translate(-30px,40px) scale(0.9); }
-            75% { transform: translate(-70px,-30px) scale(1.1); }
-        }
-
-        .grid-pattern {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.04;
-            background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+            background-image:
+                radial-gradient(ellipse at 15% 20%, rgba(46, 82, 46, 0.35) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 80%, rgba(28, 48, 28, 0.45) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23334d33' fill-opacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
         }
 
         /* Падающие фрагменты кода */
-        .snippet-fall { position: fixed; top: -100px; z-index: 0; white-space: nowrap; pointer-events: none; font-family: 'Fira Code', monospace; --rot:0deg; animation-name: fallDown; animation-timing-function: linear; }
-        @keyframes fallDown { from { transform: translateY(-100px) rotate(var(--rot)); } to { transform: translateY(110vh) rotate(var(--rot)); } }
+        .snippet-fall {
+            position: fixed; top: -100px; z-index: 0; white-space: nowrap;
+            pointer-events: none; font-family: 'JetBrains Mono', monospace;
+            animation: fallDown linear infinite;
+        }
+        @keyframes fallDown {
+            from { transform: translateY(-100px); }
+            to { transform: translateY(110vh); }
+        }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
         /* Header */
         header {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            background: rgba(14,23,18,0.92); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            background: rgba(11, 18, 14, 0.88); backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border); padding: 0 24px; height: 70px;
-            display: flex; align-items: center; transition: background var(--transition);
+            display: flex; align-items: center;
         }
-        header.scrolled { background: rgba(14,23,18,0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
-        .nav { display: flex; align-items: center; justify-content: space-between; width: 100%; max-width: 1200px; margin: 0 auto; gap: 20px; }
-        .nav-logo { font-weight: 800; font-size: 1.4rem; color: var(--text-primary); white-space: nowrap; font-family: 'Sora', sans-serif; }
-        .nav-links { display: flex; list-style: none; gap: 8px; flex-wrap: nowrap; justify-content: center; }
-        .nav-links a { text-decoration: none; color: var(--text-secondary); padding: 8px 16px; border-radius: 40px; font-weight: 500; font-size: 0.9rem; transition: color var(--transition), background var(--transition); white-space: nowrap; }
-        .nav-links a:hover { color: #fff; background: rgba(47,143,62,0.25); }
+        .nav {
+            display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+            width: 100%; max-width: 1200px; margin: 0 auto;
+        }
+        .nav-logo {
+            font-weight: 800; font-size: 1.3rem; color: var(--text-primary);
+            font-family: 'Unbounded', sans-serif; display: flex; align-items: center; gap: 8px;
+        }
+        .nav-logo span { color: var(--accent-glow); font-family: 'JetBrains Mono', monospace; }
 
-        /* Language Dropdown */
-        .lang-switcher { position: relative; margin-left: auto; }
-        .lang-current { background: rgba(255,255,255,0.08); border: 1px solid var(--border); border-radius: 30px; padding: 8px 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--text-primary); font-size: 0.9rem; font-weight: 600; transition: all var(--transition); }
-        .lang-current:hover { background: rgba(47,143,62,0.25); border-color: var(--accent); }
-        .lang-current i { font-size: 0.8rem; transition: transform var(--transition); }
+        .nav-links { display: flex; list-style: none; gap: 12px; justify-content: center; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-secondary); padding: 8px 18px;
+            border-radius: var(--radius-pill); font-weight: 500; font-size: 0.9rem;
+            transition: all var(--transition);
+        }
+        .nav-links a:hover { color: #fff; background: rgba(46, 158, 79, 0.18); }
+
+        /* Dropdown переключатель языка */
+        .lang-switcher { position: relative; justify-self: end; }
+        .lang-current {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            padding: 6px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            transition: all var(--transition);
+        }
+        .lang-current:hover {
+            border-color: var(--accent);
+            color: #fff;
+            background: rgba(46, 158, 79, 0.15);
+        }
+        .lang-current i { font-size: 0.75rem; transition: transform var(--transition); }
         .lang-switcher.open .lang-current i { transform: rotate(180deg); }
-        .lang-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; list-style: none; padding: 6px; min-width: 140px; display: none; box-shadow: 0 8px 24px rgba(0,0,0,0.35); z-index: 1001; }
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            list-style: none;
+            padding: 6px;
+            min-width: 160px;
+            display: none;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            z-index: 1001;
+        }
         .lang-switcher.open .lang-dropdown { display: block; }
-        .lang-dropdown li { padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; color: var(--text-secondary); transition: all var(--transition); display: flex; align-items: center; gap: 8px; }
-        .lang-dropdown li:hover { background: rgba(47,143,62,0.25); color: #fff; }
+        .lang-dropdown li {
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-family: 'Manrope', sans-serif;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .lang-dropdown li:hover { background: rgba(46, 158, 79, 0.15); color: #fff; }
         .lang-dropdown li.active { color: var(--accent-glow); font-weight: 600; }
-        .lang-dropdown li.active::before { content: '✓'; margin-right: 4px; }
-
-        .menu-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 10px; z-index: 1001; }
-        .menu-toggle span { width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: all var(--transition); }
+        .lang-dropdown li .flag { margin-right: 4px; }
 
         /* Hero */
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 140px 0 80px; position: relative; z-index: 1; }
-        .hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .hero-content { display: flex; flex-direction: column; gap: 24px; }
-        .hero h1 { font-size: clamp(2.8rem,5vw,4.2rem); font-weight: 900; line-height: 1.05; letter-spacing: -1.5px; animation: fadeInUp 0.8s ease-out 0.1s both; font-family: 'Sora', sans-serif; }
-        .hero h1 .gradient-text { background: linear-gradient(135deg, #e8f2e9 0%, #b5d9b8 40%, #87c08b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero p { font-size: 1.15rem; color: var(--text-secondary); max-width: 480px; animation: fadeInUp 0.8s ease-out 0.2s both; }
-        .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeInUp 0.8s ease-out 0.3s both; }
-        .btn { padding: 14px 28px; border-radius: 50px; font-weight: 600; font-size: 0.95rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all var(--transition); border: none; font-family: inherit; }
-        .btn-outline { background: transparent; color: #fff; border: 1.5px solid var(--border-light); }
-        .btn-outline:hover { background: rgba(47,143,62,0.2); }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; }
+        .hero .container { display: grid; grid-template-columns: 1fr 1.1fr; gap: 50px; align-items: center; }
+        .hero-content { display: flex; flex-direction: column; gap: 20px; }
+        .hero h1 { font-size: clamp(2.5rem, 4.5vw, 3.8rem); font-weight: 800; line-height: 1.1; font-family: 'Unbounded', sans-serif; letter-spacing: -1px; }
+        .hero h1 .gradient-text { background: linear-gradient(135deg, #ecf7ed 0%, #72d688 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.05rem; color: var(--text-secondary); max-width: 480px; }
 
-        .hero-visual { display: flex; justify-content: center; align-items: center; }
-        .hero-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; width: 100%; max-width: 440px; }
-        .hero-stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 20px; text-align: center; box-shadow: var(--shadow-card); transition: all var(--transition); }
-        .hero-stat-card:hover { transform: translateY(-4px); border-color: var(--accent); }
-        .hero-stat-number { font-size: 2.5rem; font-weight: 800; color: var(--accent-glow); font-family: 'Sora', sans-serif; margin-bottom: 8px; }
-        .hero-stat-label { color: var(--text-secondary); font-size: 0.9rem; }
+        .btn-console {
+            display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px;
+            background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 12px;
+            color: var(--accent-glow); font-family: 'JetBrains Mono', monospace; font-size: 0.95rem;
+            text-decoration: none; transition: all var(--transition); cursor: pointer; width: fit-content;
+            outline: 2px solid transparent;
+            outline-offset: -2px;
+        }
+        .btn-console:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+            outline-color: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(46, 158, 79, 0.25);
+        }
 
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .code-display {
+            background: #080d0a; border: 1px solid var(--border); border-radius: var(--radius-lg);
+            padding: 26px; box-shadow: var(--shadow-card); font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem; line-height: 1.7; color: var(--text-primary); overflow-x: auto;
+            font-weight: 600;
+        }
+        .code-display pre { margin: 0; }
+        .k { color: var(--code-keyword); } .s { color: var(--code-string); } .f { color: var(--code-function); } .c { color: var(--code-comment); }
 
-        /* Sections */
-        .section { padding: 100px 0; position: relative; z-index: 1; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-tag { display: inline-block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-glow); margin-bottom: 12px; }
-        .section-tag i { margin-right: 8px; }
-        .section-title { font-size: clamp(2rem,3.5vw,3rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; font-family: 'Sora', sans-serif; }
-        .section-subtitle { color: var(--text-secondary); font-size: 1.05rem; max-width: 500px; margin: 0 auto; }
+        .section { padding: 90px 0; }
+        .section-header { text-align: left; margin-bottom: 50px; }
+        .section-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent-glow); margin-bottom: 6px; display: block; }
+        .section-title { font-size: clamp(2rem, 3.2vw, 2.6rem); font-weight: 700; font-family: 'Unbounded', sans-serif; color: var(--text-primary); }
+        .section-subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-top: 8px; }
 
-        /* Skills */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 20px; }
-        .skill-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; transition: all var(--transition); position: relative; overflow: hidden; }
-        .skill-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 30px rgba(47,143,62,0.2); }
-        .skill-icon { font-size: 2rem; margin-bottom: 16px; color: var(--accent-glow); }
-        .skill-card h4 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text-primary); }
-        .skill-card p { color: var(--text-secondary); font-size: 0.9rem; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; }
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: all var(--transition);
+            outline: 2px solid transparent;
+            outline-offset: -2px;
+        }
+        .skill-card:hover {
+            border-color: var(--accent);
+            outline-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        .skill-icon { font-size: 1.8rem; margin-bottom: 12px; color: var(--accent-glow); }
+        .skill-card h4 { font-family: 'Unbounded', sans-serif; font-size: 1.15rem; margin-bottom: 6px; }
+        .skill-card p { color: var(--text-secondary); font-size: 0.88rem; }
 
-        /* Works */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 20px; }
-        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: all var(--transition); display: flex; flex-direction: column; }
-        .project-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 30px rgba(47,143,62,0.2); }
-        .project-card h4 { font-size: 1.4rem; margin-bottom: 12px; color: var(--text-primary); }
-        .project-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px; flex-grow: 1; }
-        .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
-        .project-tags span { background: rgba(47,143,62,0.2); border: 1px solid rgba(87,176,95,0.35); padding: 6px 14px; border-radius: 40px; font-size: 0.8rem; font-weight: 500; color: var(--text-primary); }
-        .project-media { border-radius: var(--radius); overflow: hidden; margin-bottom: 16px; background: #000; aspect-ratio: 16/9; }
-        .project-media iframe, .project-media video { width: 100%; height: 100%; border: none; display: block; object-fit: cover; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: all var(--transition);
+            outline: 2px solid transparent;
+            outline-offset: -2px;
+        }
+        .project-card:hover {
+            border-color: var(--accent);
+            outline-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        .project-media { border-radius: 12px; overflow: hidden; margin-bottom: 14px; background: #000; aspect-ratio: 16/9; }
+        .project-media iframe, .project-media video { width: 100%; height: 100%; border: none; }
+        .project-card h4 { font-family: 'Unbounded', sans-serif; font-size: 1.2rem; margin-bottom: 8px; }
+        .project-card p { color: var(--text-secondary); font-size: 0.9rem; flex-grow: 1; margin-bottom: 14px; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .project-tags span { background: rgba(46, 158, 79, 0.15); border: 1px solid var(--border-light); padding: 4px 12px; border-radius: var(--radius-pill); font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; }
 
-        /* About */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-        .about-image-wrapper { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/5; background: var(--bg-card); border: 1px solid var(--border); }
-        .about-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-        .skill-tag { padding: 8px 16px; border-radius: 40px; background: rgba(47,143,62,0.18); border: 1px solid rgba(87,176,95,0.35); font-size: 0.85rem; font-weight: 500; color: var(--text-primary); }
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 36px;
+            align-items: center;
+            box-shadow: var(--shadow-card);
+            transition: all var(--transition);
+            outline: 2px solid transparent;
+            outline-offset: -2px;
+        }
+        .about-card:hover {
+            border-color: var(--accent);
+            outline-color: var(--accent);
+            box-shadow: var(--shadow-card);
+        }
+        .about-avatar-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            background: var(--bg-secondary);
+        }
+        .about-avatar-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .about-info h3 { font-size: 1.7rem; font-family: 'Unbounded', sans-serif; margin-bottom: 12px; color: var(--text-primary); }
+        .about-info p { color: var(--text-secondary); font-size: 0.98rem; line-height: 1.6; margin-bottom: 14px; }
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+        .skill-tag { padding: 6px 16px; border-radius: var(--radius-pill); background: rgba(46, 158, 79, 0.15); border: 1px solid var(--border-light); font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; color: var(--text-primary); }
 
-        /* Contact */
-        .contact-section { background: rgba(20,32,26,0.85); backdrop-filter: blur(10px); padding: 60px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
-        .contact-link { padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; }
+        .contact-section { background: var(--bg-secondary); border-top: 1px solid var(--border); padding: 70px 0; text-align: center; }
+        .contact-section .section-title,
+        .contact-section .section-subtitle { text-align: center; }
+        .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+        .contact-link { padding: 12px 24px; border-radius: var(--radius-pill); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; transition: all var(--transition); }
+        .contact-link:hover { transform: translateY(-2px); }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            padding: 10px;
+        }
+        .menu-toggle span { width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: all var(--transition); }
 
         @media (max-width: 900px) {
-            .hero .container { grid-template-columns: 1fr; text-align: center; }
-            .hero p { margin: 0 auto; }
-            .hero-buttons { justify-content: center; }
-            .about-grid { grid-template-columns: 1fr; }
-            .nav { gap: 10px; }
-            .menu-toggle { display: flex; }
-            .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: rgba(14,23,18,0.98); flex-direction: column; padding: 20px; border-bottom: 1px solid var(--border); z-index: 999; }
+            .hero .container { grid-template-columns: 1fr; }
+            .nav { grid-template-columns: auto auto; justify-content: space-between; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(11,18,14,0.98);
+                flex-direction: column;
+                padding: 20px;
+                border-bottom: 1px solid var(--border);
+                gap: 0;
+            }
             .nav-links.open { display: flex; }
             .nav-links li { width: 100%; text-align: center; }
             .nav-links a { display: block; padding: 12px; }
-            .lang-switcher { margin-left: 0; }
+            .menu-toggle { display: flex; }
+            .about-card { grid-template-columns: 1fr; text-align: center; }
+            .about-avatar-wrapper { max-width: 200px; margin: 0 auto; }
+            .skill-tags { justify-content: center; }
+            .section-header { text-align: center; }
         }
     </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="bg-particles">
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-    </div>
-    <div class="grid-pattern"></div>
 
     <header id="header">
         <div class="nav">
-            <div class="nav-logo">DevName</div>
+            <div class="nav-logo"><span>&gt;</span> ameonrise</div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" data-i18n="nav.home">Home</a></li>
                 <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
                 <li><a href="#works" data-i18n="nav.projects">Works</a></li>
-                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="#about" data-i18n="nav.about">About me</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
             </ul>
             <div class="lang-switcher" id="langSwitcher">
-                <button class="lang-current" id="langCurrent">
-                    <span id="currentLangText">EN</span>
+                <div class="lang-current" id="langCurrent">
+                    <span id="currentLangText">🇬🇧 English</span>
                     <i class="fas fa-chevron-down"></i>
-                </button>
+                </div>
                 <ul class="lang-dropdown" id="langDropdown">
-                    <li data-lang="en" class="active">English</li>
-                    <li data-lang="ru">Русский</li>
+                    <li data-lang="en" class="active"><span class="flag">🇬🇧</span> English</li>
+                    <li data-lang="ru"><span class="flag">🇷🇺</span> Русский</li>
                 </ul>
             </div>
             <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
@@ -208,31 +336,30 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1><span data-i18n="hero.title1">I write</span><br><span class="gradient-text" data-i18n="hero.title2">clean code</span><br><span data-i18n="hero.title3">for games</span></h1>
-                <p data-i18n="hero.desc">Middle Roblox Scripter with 3–4 years of experience. OOP, Janitor, Signal, KnitFramework. I create game mechanics, systems, and tools that just work.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-outline" data-i18n="hero.btn2">✉️ Contact me</a>
-                </div>
+                <h1>
+                    <span data-i18n="hero.line1">I write</span><br>
+                    <span class="gradient-text" data-i18n="hero.line2">clean code</span><br>
+                    <span data-i18n="hero.line3">for games</span>
+                </h1>
+                <p data-i18n="hero.desc">Middle Roblox Scripter with 3–4 years of experience. Specializing in systems architecture, game mechanics, and performance optimization.</p>
+                <a href="#contact" class="btn-console" data-i18n="hero.btn2">&gt;_ execute_contact.lua</a>
             </div>
-            <div class="hero-visual">
-                <div class="hero-stats">
-                    <div class="hero-stat-card">
-                        <div class="hero-stat-number">3–4</div>
-                        <div class="hero-stat-label" data-i18n="hero.stat1">years experience</div>
-                    </div>
-                    <div class="hero-stat-card">
-                        <div class="hero-stat-number">Middle</div>
-                        <div class="hero-stat-label" data-i18n="hero.stat2">level</div>
-                    </div>
-                    <div class="hero-stat-card">
-                        <div class="hero-stat-number">OOP</div>
-                        <div class="hero-stat-label" data-i18n="hero.stat3">paradigm</div>
-                    </div>
-                    <div class="hero-stat-card">
-                        <div class="hero-stat-number">Luau</div>
-                        <div class="hero-stat-label" data-i18n="hero.stat4">language</div>
-                    </div>
-                </div>
+            
+            <div class="code-display">
+<pre><code><span class="c">-- Roblox Studio Developer Profile</span>
+<span class="k">local</span> Scripter = {
+    Name = <span class="s">"ameonrise"</span>,
+    Role = <span class="s">"Middle Scripter"</span>,
+    Experience = <span class="s">"3-4 Years"</span>,
+    Frameworks = {<span class="s">"Knit"</span>, <span class="s">"GoodSignal"</span>, <span class="s">"Janitor"</span>},
+    Paradigm = <span class="s">"OOP (Object-Oriented)"</span>
+}
+
+<span class="k">function</span> Scripter:<span class="f">GetStatus</span>()
+    <span class="k">return</span> <span class="s">"Ready for new projects"</span>
+<span class="k">end</span>
+
+<span class="f">print</span>(Scripter:<span class="f">GetStatus</span>())</code></pre>
             </div>
         </div>
     </section>
@@ -240,9 +367,9 @@
     <section class="section" id="skills">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag"><i class="fas fa-cogs"></i><span data-i18n="skills.tag">Skills</span></div>
+                <span class="section-tag" data-i18n="skills.tag">// Skills</span>
                 <h2 class="section-title" data-i18n="skills.title">Technologies & Tools</h2>
-                <p class="section-subtitle" data-i18n="skills.sub">What I use to build robust Roblox experiences.</p>
+                <p class="section-subtitle" data-i18n="skills.sub">What I use to build Roblox experiences.</p>
             </div>
             <div class="skills-grid" id="skillsContainer"></div>
         </div>
@@ -251,9 +378,9 @@
     <section class="section" id="works">
         <div class="container">
             <div class="section-header">
-                <div class="section-tag"><i class="fas fa-briefcase"></i><span data-i18n="projects.tag">Works</span></div>
-                <h2 class="section-title" data-i18n="projects.title">My Works</h2>
-                <p class="section-subtitle" data-i18n="projects.sub">Some projects I've contributed to or built myself.</p>
+                <span class="section-tag" data-i18n="projects.tag">// Portfolio</span>
+                <h2 class="section-title" data-i18n="projects.title">Featured Works</h2>
+                <p class="section-subtitle" data-i18n="projects.sub">Systems, modules, and games created by me.</p>
             </div>
             <div class="projects-grid" id="worksContainer"></div>
         </div>
@@ -261,12 +388,15 @@
 
     <section class="section" id="about">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-image-wrapper">
-                    <img src="./render.png" alt="Developer">
+            <div class="section-header">
+                <span class="section-tag" data-i18n="about.tag">// Overview</span>
+                <h2 class="section-title" data-i18n="about.mtitle">About me</h2>
+            </div>
+            <div class="about-card">
+                <div class="about-avatar-wrapper">
+                    <img src="./render.png" alt="Developer Render">
                 </div>
-                <div class="about-text">
-                    <div class="section-tag"><i class="fas fa-user"></i><span data-i18n="about.tag">About me</span></div>
+                <div class="about-info">
                     <h3 data-i18n="about.title">Middle Roblox Scripter</h3>
                     <p data-i18n="about.desc1">I have 3–4 years of experience in Roblox Studio. I specialize in game mechanics, optimization, and architecture.</p>
                     <p data-i18n="about.desc2">I'm comfortable with OOP, Janitor, GoodSignal, and KnitFramework. My goal is to write clean, maintainable code that scales.</p>
@@ -283,55 +413,51 @@
 
     <section class="contact-section" id="contact">
         <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i class="fas fa-envelope"></i><span data-i18n="contact.tag">Contact</span></div>
-                <h3 class="section-title" data-i18n="contact.title">Let's work together!</h3>
-                <p class="section-subtitle" data-i18n="contact.sub">Reach me on any platform.</p>
-            </div>
+            <h2 class="section-title" data-i18n="contact.title">You can order here!</h2>
+            <p class="section-subtitle" data-i18n="contact.sub">Contact me via Discord or Telegram.</p>
             <div class="contact-links">
-                <a href="https://discord.com/users/yourusername" target="_blank" class="contact-link" style="background:#5865f2;color:#fff;"><i class="fab fa-discord"></i> Discord</a>
-                <a href="https://t.me/yourusername" target="_blank" class="contact-link" style="background:#229ED9;color:#fff;"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                <a href="https://www.roblox.com/users/yourid/profile" target="_blank" class="contact-link" style="background:#ff0000;color:#fff;"><i class="fas fa-gamepad"></i> Roblox</a>
+                <a href="https://discord.com/users/ameonrise" target="_blank" class="contact-link" style="background:#5865f2;color:#fff;"><i class="fab fa-discord"></i> Discord</a>
+                <a href="https://t.me/aameonrise" target="_blank" class="contact-link" style="background:#229ED9;color:#fff;"><i class="fab fa-telegram-plane"></i> Telegram</a>
             </div>
         </div>
     </section>
 
     <script src="config.js"></script>
     <script>
-        // ================= ПЕРЕВОДЫ =================
         const translations = {
             en: {
                 'nav.home': 'Home',
                 'nav.skills': 'Skills',
                 'nav.projects': 'Works',
-                'nav.about': 'About',
+                'nav.about': 'About me',
                 'nav.contact': 'Contact',
-                'hero.title1': 'I write',
-                'hero.title2': 'clean code',
-                'hero.title3': 'for games',
-                'hero.desc': 'Middle Roblox Scripter with 3–4 years of experience. OOP, Janitor, Signal, KnitFramework. I create game mechanics, systems, and tools that just work.',
-                'hero.btn2': '✉️ Contact me',
-                'hero.stat1': 'years experience',
-                'hero.stat2': 'level',
-                'hero.stat3': 'paradigm',
-                'hero.stat4': 'language',
-                'skills.tag': 'Skills',
+
+                'hero.line1': 'I write',
+                'hero.line2': 'clean code',
+                'hero.line3': 'for games',
+                'hero.desc': 'Middle Scripter with 3–4 years of experience. Specializing in systems architecture, game mechanics, and performance optimization.',
+                'hero.btn2': '>_ execute_contact.lua',
+
+                'skills.tag': '// Skills',
                 'skills.title': 'Technologies & Tools',
-                'skills.sub': 'What I use to build robust Roblox experiences.',
-                'projects.tag': 'Works',
-                'projects.title': 'My Works',
-                'projects.sub': 'Some projects I\'ve contributed to or built myself.',
-                'about.tag': 'About me',
-                'about.title': 'Middle Roblox Scripter',
+                'skills.sub': 'What I use to create clean code.',
+
+                'projects.tag': '// Portfolio',
+                'projects.title': 'Featured Works',
+                'projects.sub': 'Systems, modules, and games created by me.',
+
+                'about.tag': '// Overview',
+                'about.mtitle': 'About me',
+                'about.title': 'ameonrise - Roblox Scripter',
                 'about.desc1': 'I have 3–4 years of experience in Roblox Studio. I specialize in game mechanics, optimization, and architecture.',
                 'about.desc2': 'I\'m comfortable with OOP, Janitor, GoodSignal, and KnitFramework. My goal is to write clean, maintainable code that scales.',
                 'about.tag1': '3-4 years',
                 'about.tag2': 'Middle',
                 'about.tag3': 'Luau',
                 'about.tag4': 'OOP',
-                'contact.tag': 'Contact',
-                'contact.title': 'Let\'s work together!',
-                'contact.sub': 'Reach me on any platform.'
+
+                'contact.title': 'You can order here!',
+                'contact.sub': 'Contact me via Discord or Telegram.'
             },
             ru: {
                 'nav.home': 'Главная',
@@ -339,32 +465,33 @@
                 'nav.projects': 'Работы',
                 'nav.about': 'Обо мне',
                 'nav.contact': 'Контакты',
-                'hero.title1': 'Я пишу',
-                'hero.title2': 'чистый код',
-                'hero.title3': 'для игр',
-                'hero.desc': 'Middle Roblox-скриптер с опытом 3–4 года. ООП, Janitor, Signal, KnitFramework. Создаю игровые механики, системы и инструменты, которые работают.',
-                'hero.btn2': '✉️ Связаться',
-                'hero.stat1': 'года опыта',
-                'hero.stat2': 'уровень',
-                'hero.stat3': 'парадигма',
-                'hero.stat4': 'язык',
-                'skills.tag': 'Навыки',
+
+                'hero.line1': 'Я пишу',
+                'hero.line2': 'чистый код',
+                'hero.line3': 'для игр',
+                'hero.desc': 'Middle скриптер с опытом 3–4 года. Специализируюсь на архитектуре систем, игровых механиках и оптимизации производительности.',
+                'hero.btn2': '>_ связаться.lua',
+
+                'skills.tag': '// Навыки',
                 'skills.title': 'Технологии и инструменты',
-                'skills.sub': 'Что я использую для создания надёжных Roblox-проектов.',
-                'projects.tag': 'Работы',
+                'skills.sub': 'Что я использую для создания чистого кода.',
+
+                'projects.tag': '// Портфолио',
                 'projects.title': 'Мои работы',
-                'projects.sub': 'Некоторые проекты, в которых я участвовал или сделал сам.',
-                'about.tag': 'Обо мне',
-                'about.title': 'Middle Roblox-скриптер',
+                'projects.sub': 'Некоторые системы и проекты, созданные мной.',
+
+                'about.tag': '// Обзор',
+                'about.mtitle': 'Обо мне',
+                'about.title': 'ameonrise - Roblox Scripter',
                 'about.desc1': 'У меня 3–4 года опыта в Roblox Studio. Специализируюсь на игровых механиках, оптимизации и архитектуре.',
-                'about.desc2': 'Хорошо владею ООП, Janitor, GoodSignal и KnitFramework. Моя цель — писать чистый, поддерживаемый код, который масштабируется.',
+                'about.desc2': 'Хорошо владею ООП (модулями), Janitor и Signal (GoodSignal). Моя цель — писать чистый, поддерживаемый код, который масштабируется.',
                 'about.tag1': '3-4 года',
                 'about.tag2': 'Middle',
                 'about.tag3': 'Luau',
                 'about.tag4': 'ООП',
-                'contact.tag': 'Контакты',
-                'contact.title': 'Давай поработаем вместе!',
-                'contact.sub': 'Свяжись со мной на любой платформе.'
+
+                'contact.title': 'Заказать можно здесь!',
+                'contact.sub': 'Свяжись со мной через Discord или Telegram.'
             }
         };
 
@@ -379,7 +506,14 @@
                     el.textContent = translations[lang][key];
                 }
             });
-            document.getElementById('currentLangText').textContent = lang === 'en' ? 'EN' : 'RU';
+
+            const langButton = document.getElementById('currentLangText');
+            if (lang === 'en') {
+                langButton.textContent = '🇬🇧';
+            } else {
+                langButton.textContent = '🇷🇺';
+            }
+
             document.querySelectorAll('.lang-dropdown li').forEach(li => {
                 li.classList.toggle('active', li.dataset.lang === lang);
             });
@@ -388,40 +522,40 @@
             renderWorks();
         }
 
-        // ========== РЕНДЕР НАВЫКОВ ==========
         function renderSkills() {
             const container = document.getElementById('skillsContainer');
-            container.innerHTML = skillsData.map(skill => `
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fas ${skill.icon}"></i></div>
-                    <h4>${skill.title[currentLang]}</h4>
-                    <p>${skill.description[currentLang]}</p>
-                </div>
-            `).join('');
+            if (typeof skillsData !== 'undefined') {
+                container.innerHTML = skillsData.map(s => `
+                    <div class="skill-card">
+                        <div class="skill-icon"><i class="fas ${s.icon}"></i></div>
+                        <h4>${s.title[currentLang]}</h4>
+                        <p>${s.description[currentLang]}</p>
+                    </div>
+                `).join('');
+            }
         }
 
-        // ========== РЕНДЕР РАБОТ ==========
         function renderWorks() {
             const container = document.getElementById('worksContainer');
-            container.innerHTML = worksData.map(work => {
-                let mediaHTML = '';
-                if (work.media && work.media.type === 'youtube') {
-                    const ytId = getYouTubeId(work.media.src);
-                    mediaHTML = `<div class="project-media"><iframe src="https://www.youtube.com/embed/${ytId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
-                } else if (work.media && work.media.type === 'local') {
-                    mediaHTML = `<div class="project-media"><video controls preload="metadata"><source src="${work.media.src}" type="video/mp4"></video></div>`;
-                }
-                return `
-                    <div class="project-card">
-                        ${mediaHTML}
-                        <h4>${work.title[currentLang]}</h4>
-                        <p>${work.description[currentLang]}</p>
-                        <div class="project-tags">
-                            ${work.tags.map(tag => `<span>${tag}</span>`).join('')}
+            if (typeof worksData !== 'undefined') {
+                container.innerHTML = worksData.map(w => {
+                    let mediaHTML = '';
+                    if (w.media && w.media.type === 'youtube') {
+                        const ytId = getYouTubeId(w.media.src);
+                        mediaHTML = `<div class="project-media"><iframe src="https://www.youtube.com/embed/${ytId}" frameborder="0" allowfullscreen></iframe></div>`;
+                    } else if (w.media && w.media.type === 'local') {
+                        mediaHTML = `<div class="project-media"><video controls preload="metadata"><source src="${w.media.src}" type="video/mp4"></video></div>`;
+                    }
+                    return `
+                        <div class="project-card">
+                            ${mediaHTML}
+                            <h4>${w.title[currentLang]}</h4>
+                            <p>${w.description[currentLang]}</p>
+                            <div class="project-tags">${w.tags.map(t => `<span>${t}</span>`).join('')}</div>
                         </div>
-                    </div>
-                `;
-            }).join('');
+                    `;
+                }).join('');
+            }
         }
 
         function getYouTubeId(url) {
@@ -430,12 +564,13 @@
             return (match && match[2].length === 11) ? match[2] : url;
         }
 
-        // ========== ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА ==========
         const langSwitcher = document.getElementById('langSwitcher');
         const langCurrent = document.getElementById('langCurrent');
         const langDropdown = document.getElementById('langDropdown');
 
-        langCurrent.addEventListener('click', () => langSwitcher.classList.toggle('open'));
+        langCurrent.addEventListener('click', () => {
+            langSwitcher.classList.toggle('open');
+        });
 
         document.querySelectorAll('.lang-dropdown li').forEach(li => {
             li.addEventListener('click', function() {
@@ -445,10 +580,11 @@
         });
 
         document.addEventListener('click', (e) => {
-            if (!langSwitcher.contains(e.target)) langSwitcher.classList.remove('open');
+            if (!langSwitcher.contains(e.target)) {
+                langSwitcher.classList.remove('open');
+            }
         });
 
-        // ========== НАВИГАЦИЯ ==========
         const allNavLinks = document.querySelectorAll('.nav-links a');
         allNavLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -463,22 +599,28 @@
         });
 
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
         const menuToggle = document.getElementById('menuToggle');
         const navLinksContainer = document.getElementById('navLinks');
-        menuToggle.addEventListener('click', () => navLinksContainer.classList.toggle('open'));
+        menuToggle.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('open');
+        });
 
-        // ========== ПАДАЮЩИЕ ФРАГМЕНТЫ КОДА ==========
         const codeSnippets = [
-            'local signal = GoodSignal.new()', 'function module:Init()', 'janitor:Add(connection)',
-            'return setmetatable({}, Class)', 'if player.Character then', 'task.spawn(function()',
-            'end)', 'workspace.ChildAdded:Connect()', 'local part = Instance.new("Part")',
-            'for i = 1, 10 do', 'self._maid:GiveTask(task)', 'table.insert(self.items, value)',
-            'elseif type == "number" then', '-- Knit service', 'Knit.CreateController {',
-            'Knig.Start():catch(warn)', 'require(script.Parent.Module)',
-            'local replicated = game:GetService("ReplicatedStorage")', 'remoteEvent:FireClient(player)',
-            'dataStore:SetAsync(key, data)'
+            'OOP', 'Luau', 'Roblox Studio', 'Scripting', 'Knit', 'Signal', 'Janitor',
+            'local Players = game:GetService("Players")',
+            'local ServerStorage = game:GetService("ServerStorage")',
+            'local ReplicatedStorage = game:GetService("ReplicatedStorage")',
+            'local UserInputService = game:GetService("UserInputService")',
+            'local TweenService = game:GetService("TweenService")',
+            'local CollectionService = game:GetService("CollectionService")',
+            'local Lighting = game:GetService("Lighting")',
+            'local RunService = game:GetService("RunService")',
+            'local TeleportService = game:GetService("TeleportService")',
+            'local DataStoreService = game:GetService("DataStoreService")'
         ];
 
         function createSnippet() {
@@ -496,9 +638,12 @@
             snippet.addEventListener('animationend', () => snippet.remove());
         }
 
-        setInterval(() => { if (Math.random() < 0.4) createSnippet(); }, 4000);
+        setInterval(() => {
+            if (Math.random() < 0.2) {
+                createSnippet();
+            }
+        }, 10000);
 
-        // ========== ИНИЦИАЛИЗАЦИЯ ==========
         const savedLang = localStorage.getItem('lang') || 'en';
         applyLanguage(savedLang);
     </script>
