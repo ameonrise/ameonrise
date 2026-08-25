@@ -100,7 +100,7 @@ const pricingData = [
             en: "Bug fixes and simple mechanics (double jump, custom sprint, loading screen).", 
             ru: "Исправление багов и простые механики (двойной прыжок, кастомный спринт, загрузочный экран)." 
         },
-        price: "1 500 – 2 500 R$ / $10 – $20 / 800 – 1 500 ₽"
+        price: "1 000 – 2 500 R$ / $8 – $20 / 600 – 1 500 ₽"
     },
     {
         title: { 
