@@ -9,6 +9,15 @@
 //     * для none: просто не указывайте media или поставьте { type: "none" }
 
 const worksData = [
+    {
+        title: { en: "Scalable Gameplay Ability System", ru: "Масштабируемая система способностей" },
+        description: {
+            en: "A simple, scalable ability system based on OOP",
+            ru: "Простоая масштабируемая система способностей, освоенная на ООП"
+        },
+        tags: ["OOP", "Janitor", "Signal"],
+        media: { type: "youtube", src: "https://youtu.be/tf3yrTMoGKk" }
+    },
     // {
     //     title: { en: "Forest Survival", ru: "Forest Survival" },
     //     description: {
@@ -60,23 +69,15 @@ const skillsData = [
         title: { en: "Janitor", ru: "Janitor" },
         description: {
             en: "Resource management and cleanup without leaks.",
-            ru: "Управление ресурсами и очистка без утечек."
+            ru: "Управление ресурсами и очистка без утечек памяти."
         }
     },
     {
         icon: "fa-bolt",
         title: { en: "Signal (GoodSignal)", ru: "Signal (GoodSignal)" },
         description: {
-            en: "Event-driven architecture, reactive systems, clean dependencies.",
+            en: "Event-driven architecture, reactive systems, clean ",
             ru: "Событийная архитектура, реактивные системы, чистые зависимости."
-        }
-    },
-    {
-        icon: "fa-tools",
-        title: { en: "KnitFramework", ru: "KnitFramework" },
-        description: {
-            en: "Service and controller architecture for scalable projects.",
-            ru: "Архитектура сервисов и контроллеров для масштабируемых проектов."
         }
     },
     {
