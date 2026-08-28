@@ -786,12 +786,12 @@
             </ul>
             <div class="lang-switcher" id="langSwitcher">
                 <div class="lang-current" id="langCurrent">
-                    <span id="currentLangText">🇬🇧 English</span>
+                    <span id="currentLangText">Eng</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <ul class="lang-dropdown" id="langDropdown">
-                    <li data-lang="en" class="active"><span class="flag">🇬🇧</span> English</li>
-                    <li data-lang="ru"><span class="flag">🇷🇺</span> Русский</li>
+                    <li data-lang="en" class="active"><span class="flag">English</li>
+                    <li data-lang="ru">Русский</li>
                 </ul>
             </div>
             <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
@@ -1030,9 +1030,9 @@
 
             const langButton = document.getElementById('currentLangText');
             if (lang === 'en') {
-                langButton.textContent = '🇬🇧';
+                langButton.textContent = 'Eng';
             } else {
-                langButton.textContent = '🇷🇺';
+                langButton.textContent = 'Rus';
             }
 
             document.querySelectorAll('.lang-dropdown li').forEach(li => {
